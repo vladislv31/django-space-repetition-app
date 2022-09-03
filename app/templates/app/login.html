@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Signin page{% endblock %}
+
+{% block content %}
+
+    <main class="form-signin w-100 m-auto">
+        <form method="POST" novalidate>
+            <h1 class="h3 mb-3 fw-normal">Signin</h1>
+            {% csrf_token %}
+            {% include 'app/includes/form.html' with form=form form_type='floating' %}
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Signin</button>
+        </form>
+    </main>
+
+{% endblock %}
