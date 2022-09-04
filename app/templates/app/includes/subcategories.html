@@ -1,0 +1,10 @@
+<ul class="categories-list">
+    {% for subcategory in subcategories %}
+        <li>
+            <a href="#">{{ subcategory.name }}</a> ({{ subcategory.get_to_repeat_cards_full_count }} to repeat)
+            {% if subcategory.subcategories.all %}
+                    {% include 'app/includes/subcategories.html' with subcategories=subcategory.subcategories.all %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
 from .forms import LoginForm
+from .services.categories import get_top_categories_by_user
 
 
 def login_view(request):
@@ -57,4 +58,5 @@ def logout_view(request):
 
 @login_required
 def dashboard_view(request):
-    return render(request, "app/dashboard.html")
+    categories = get_top_categories_by_user(request.user)
+    return render(request, "app/dashboard.html", {"categories": categories})
