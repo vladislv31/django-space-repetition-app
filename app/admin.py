@@ -1,3 +1,12 @@
-from django.contrib import admin # noqa
+from django.contrib import admin
+from .models import Category, Card
 
-# Register your models here.
+from mptt.admin import DraggableMPTTAdmin
+
+
+class CategoryAdmin(DraggableMPTTAdmin):
+    pass
+
+
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Card)
