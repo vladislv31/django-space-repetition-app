@@ -3,8 +3,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
-from mptt.utils import tree_item_iterator
-
 from .forms import LoginForm
 from .services.categories import get_top_categories_by_user
 
