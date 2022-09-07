@@ -22,7 +22,7 @@ def login_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect(reverse('dashboard'))
+                    return redirect(reverse('app:dashboard'))
                 else:
                     form.invalid_login_error()
             else:
@@ -38,7 +38,7 @@ def register_view(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('login'))
+            return redirect(reverse('app:login'))
         else:
             print(form.errors.as_data())
     else:
@@ -49,7 +49,7 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect(reverse('login'))
+    return redirect(reverse('app:login'))
 
 
 @login_required
