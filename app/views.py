@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
 from .forms import LoginForm
-from .services.categories import get_top_categories_by_user
+from .services.categories import get_categories_by_user
 from .services.cards import get_card_to_learn, remember_card
 from .exceptions import IncorrectRememberTypeError
 
@@ -54,7 +54,7 @@ def logout_view(request):
 
 @login_required
 def dashboard_view(request):
-    categories = get_top_categories_by_user(request.user)
+    categories = get_categories_by_user(request.user)
     return render(request, 'app/dashboard.html', {'categories': categories})
 
 

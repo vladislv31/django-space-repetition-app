@@ -17,7 +17,7 @@
                     </h2>
                     <div id="collapse-{{ node.pk }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ node.pk }}" data-bs-parent="#accordion">
                         <div class="accordion-body">
-                            <ul>
+                            <ul class="categories-list">
                                 {{ children }}
                             </ul>
                             <a href="{% url 'app:learn' category_id=node.pk %}" class="btn btn-primary">Learn</a>
@@ -28,7 +28,7 @@
                 <li>
                     <a href="">{{ node.name }}</a>
                     {% if not node.is_leaf_node %}
-                        <ul>
+                        <ul class="categories-list">
                             {{ children }}
                         </ul>
                     {% endif %}
