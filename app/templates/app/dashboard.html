@@ -3,43 +3,39 @@
 
 {% block content %}
 
-<div class="container">
+{% include 'app/includes/navbar.html' %}
 
-    {% include 'app/includes/navbar.html' %}
-
-    <div class="dashboard-items">
-        <div class="accordion" id="accordion">
-            {% recursetree categories %}
-                {% if not node.is_child_node %}
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading-{{ node.pk }}">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.pk }}" aria-expanded="false" aria-controls="collapse-{{ node.pk }}">
-                                {{ node.name }}
-                            </button>
-                        </h2>
-                        <div id="collapse-{{ node.pk }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ node.pk }}" data-bs-parent="#accordion">
-                            <div class="accordion-body">
-                                <ul>
-                                    {{ children }}
-                                </ul>
-                                <a href="" class="btn btn-primary">Learn</a>
-                            </div>
-                        </div>
-                    </div>
-                {% else %}
-                    <li>
-                        <a href="">{{ node.name }}</a>
-                        {% if not node.is_leaf_node %}
+<div class="dashboard-items">
+    <div class="accordion" id="accordion">
+        {% recursetree categories %}
+            {% if not node.is_child_node %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-{{ node.pk }}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.pk }}" aria-expanded="false" aria-controls="collapse-{{ node.pk }}">
+                            {{ node.name }}
+                        </button>
+                    </h2>
+                    <div id="collapse-{{ node.pk }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ node.pk }}" data-bs-parent="#accordion">
+                        <div class="accordion-body">
                             <ul>
                                 {{ children }}
                             </ul>
-                        {% endif %}
-                    </li>
-                {% endif %}
-            {% endrecursetree %}
-        </div>
+                            <a href="{% url 'app:learn' category_id=node.pk %}" class="btn btn-primary">Learn</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <li>
+                    <a href="">{{ node.name }}</a>
+                    {% if not node.is_leaf_node %}
+                        <ul>
+                            {{ children }}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endrecursetree %}
     </div>
-
 </div>
 
 {% endblock %}

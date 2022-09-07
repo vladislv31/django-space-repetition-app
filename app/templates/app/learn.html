@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+{% block content %}
+
+{% include 'app/includes/navbar.html' %}
+
+<div class="learn">
+
+    {% if card %}
+        <h3>Question</h3>
+        <p class="question">{{ card.question }}</p>
+        <div class="show-question-block">
+            <button class="btn btn-primary" id="show-answer">Show answer</button>
+        </div>
+        <div class="answer-block">
+            <h3>Answer</h3>
+            <p>{{ card.answer }}</p>
+            <p>How hard it was to remember?</p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="card_id" value="{{ card.id }}">
+                <button class="btn btn-primary" name="remember_type" value="easy">Easy</button>
+                <button class="btn btn-primary" name="remember_type" value="hard">Hard</button>
+                <button class="btn btn-primary" name="remember_type" value="very_hard">Very hard</button>
+            </form>
+        </div>
+    {% else %}
+        <p>No cards to learn</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
