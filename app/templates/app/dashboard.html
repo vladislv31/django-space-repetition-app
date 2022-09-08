@@ -5,6 +5,13 @@
 
 {% include 'app/includes/navbar.html' %}
 
+<div class="col">
+    <div class="dashboard-buttons">
+        <a href="{% url 'app:add_new_category' %}" class="btn btn-primary">Add category</a>
+        <a href="{% url 'app:add_new_card' %}" class="btn btn-primary">Add card</a>
+    </div>
+</div>
+
 <div class="dashboard-items">
     <div class="accordion" id="accordion">
         {% recursetree categories %}
@@ -21,6 +28,7 @@
                                 {{ children }}
                             </ul>
                             <a href="{% url 'app:learn' category_id=node.pk %}" class="btn btn-primary">Learn</a>
+                            <a href="{% url 'app:delete_category' category_id=node.pk %}" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>

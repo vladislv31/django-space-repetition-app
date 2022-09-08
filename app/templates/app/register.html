@@ -11,6 +11,8 @@
             {% csrf_token %}
             {% include 'app/includes/form.html' with form=form form_type='group' %}
             <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+            <br><br>
+            <a href="{% url 'app:login' %}">Already have account?</a>
         </form>
     </main>
 

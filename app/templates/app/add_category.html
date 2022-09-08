@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load mptt_tags %}
+
+{% block content %}
+
+{% include 'app/includes/navbar.html' %}
+
+<div class="create-category-form">
+    <form method="POST" class="form" novalidate>
+        <h1 class="h3 mb-3 fw-normal">Create new category</h1>
+        {% csrf_token %}
+        {% include 'app/includes/form.html' with form=form form_type='group' %}
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+</div>
+
+{% endblock %}

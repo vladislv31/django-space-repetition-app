@@ -11,6 +11,8 @@
             {% csrf_token %}
             {% include 'app/includes/form.html' with form=form form_type='floating' %}
             <button class="w-100 btn btn-lg btn-primary" type="submit">Signin</button>
+            <br><br>
+            <a href="{% url 'app:register' %}">Have no account?</a>
         </form>
     </main>
 
