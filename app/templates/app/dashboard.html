@@ -27,14 +27,14 @@
                             <ul class="categories-list">
                                 {{ children }}
                             </ul>
-                            <a href="{% url 'app:learn' category_id=node.pk %}" class="btn btn-primary">Learn</a>
+                            <a href="{% url 'app:single_category' category_id=node.pk %}" class="btn btn-primary">Go to</a>
                             <a href="{% url 'app:delete_category' category_id=node.pk %}" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>
             {% else %}
                 <li>
-                    <a href="">{{ node.name }}</a>
+					<a href="{% url 'app:single_category' node.pk %}">{{ node.name }}</a>
                     {% if not node.is_leaf_node %}
                         <ul class="categories-list">
                             {{ children }}

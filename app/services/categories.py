@@ -3,9 +3,15 @@ from django.db.models import Count
 from app.models import Category
 
 
-def get_categories_by_user(user):
+def get_categories_by_user(user, parent_category_id=None):
     """Returns categories by user"""
-    return Category.objects.filter(user=user).select_related('parent').annotate(cards_count=Count('cards__id')).all()
+    query_set = Category.objects.filter(user=user)
+
+    if parent_category_id:
+        subcategories_ids = get_subcategories_of_category(parent_category_id)
+        query_set = query_set.filter(id__in=subcategories_ids + [parent_category_id])
+
+    return query_set.select_related('parent').annotate(cards_count=Count('cards__id'))
 
 
 def get_subcategories_of_category(category_id):

@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+{% load mptt_tags %}
+
+{% block content %}
+
+{% include 'app/includes/navbar.html' %}
+
+<div class="col">
+    <div class="dashboard-buttons">
+        <a href="{% url 'app:add_new_card' %}" class="btn btn-primary">Add card</a>
+    </div>
+</div>
+
+<div class="single-category">
+    <div class="accordion" id="accordion">
+		<h4>Categories:</h4>
+        {% recursetree categories %}
+        <ul class="categories-list">
+			<li>
+				<a href="{% url 'app:single_category' node.pk %}">{{ node.name }}</a>
+				{% if not node.is_leaf_node %}
+					{{ children }}
+				{% endif %}
+			</li>
+        </ul>
+        {% endrecursetree %}
+		<a href="{% url 'app:learn' category_id=parent_id %}" class="btn btn-primary">Learn</a>
+		<a href="{% url 'app:delete_category' category_id=parent_id %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+
+{% endblock %}
