@@ -81,6 +81,12 @@ def learn_card_view(request, category_id):
 
 
 @login_required
+def single_category_view(request, category_id):
+    categories = get_categories_by_user(request.user, category_id)
+    return render(request, 'app/single_category.html', {'categories': categories, 'parent_id': category_id})
+
+
+@login_required
 def add_new_card_view(request):
     if request.method == 'POST':
         form = AddCardForm(request.user, request.POST)
