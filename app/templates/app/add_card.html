@@ -6,7 +6,7 @@
 {% include 'app/includes/navbar.html' %}
 
 <div class="create-card-form">
-    <form method="POST" class="form" novalidate>
+    <form method="POST" class="form" enctype="multipart/form-data" novalidate>
         <h1 class="h3 mb-3 fw-normal">Create new card</h1>
         {% csrf_token %}
         {% include 'app/includes/form.html' with form=form form_type='group' %}

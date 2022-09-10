@@ -24,7 +24,7 @@ class AddCategoryForm(forms.ModelForm):
 class AddCardForm(forms.ModelForm):
     class Meta:
         model = Card
-        fields = ['question', 'answer', 'category']
+        fields = ['question', 'question_image', 'answer', 'answer_image', 'category']
 
     def __init__(self, user, *args, **kwargs):
         super(AddCardForm, self).__init__(*args, **kwargs)
