@@ -12,6 +12,7 @@ psycopg2-binary = "^2.9.3"
 django-widget-tweaks = "^1.4.12"
 django-debug-toolbar = "^3.6.0"
 django-mptt = "^0.13.4"
+Pillow = "^9.2.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^5.0.4"

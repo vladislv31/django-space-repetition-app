@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from . import views
 
@@ -13,3 +15,6 @@ urlpatterns = [
     path('category/<int:category_id>', views.single_category_view, name='single_category'),
     path('delete-category/<int:category_id>', views.delete_category_view, name='delete_category'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

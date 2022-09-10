@@ -294,3 +294,4 @@ pg_data/
 .env
 .idea/
 .vscode/
+media/

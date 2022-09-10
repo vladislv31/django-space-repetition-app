@@ -26,6 +26,8 @@ class Card(models.Model):
 
     question = models.TextField()
     answer = models.TextField()
+    question_image = models.ImageField(upload_to='images/', null=True, blank=True)
+    answer_image = models.ImageField(upload_to='images/', null=True, blank=True)
     started_date = models.DateField(auto_now_add=True)
     last_repeated_date = models.DateField(auto_now_add=True)
     before_repeat_days = models.IntegerField(default=0)

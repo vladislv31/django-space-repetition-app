@@ -8,12 +8,18 @@
     {% if card %}
         <h3>Question</h3>
         <p class="question">{{ card.question }}</p>
+		{% if card.question_image %}
+		<p><img class="w-100" src="{{ card.question_image.url }}"></p>
+		{% endif %}
         <div class="show-question-block">
             <button class="btn btn-primary" id="show-answer">Show answer</button>
         </div>
         <div class="answer-block">
             <h3>Answer</h3>
             <p>{{ card.answer }}</p>
+			{% if card.answer_image %}
+			<p><img class="w-100" src="{{ card.answer_image.url }}"></p>
+			{% endif %}
             <p>How hard it was to remember?</p>
             <form action="" method="POST">
                 {% csrf_token %}

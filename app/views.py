@@ -89,7 +89,7 @@ def single_category_view(request, category_id):
 @login_required
 def add_new_card_view(request):
     if request.method == 'POST':
-        form = AddCardForm(request.user, request.POST)
+        form = AddCardForm(request.user, request.POST, request.FILES)
         if form.is_valid():
             card = form.save(commit=False)
 
